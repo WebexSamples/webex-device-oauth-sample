@@ -1,0 +1,47 @@
+{% extends "temp.html" %} {% block content %}
+<!-- Include jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    function checkAccessToken() {
+      $.ajax({
+        url: "/access_token_ready/{{ secure_prefix }}",
+        type: "GET",
+        success: function (response) {
+          if (response.token_ready) {
+            // Access token is ready, redirect to the granted page
+            window.location.href = "/granted/{{ secure_prefix }}";
+          } else {
+            // Access token is not ready, poll again after some delay
+            setTimeout(checkAccessToken, 2000); // Poll every 2 seconds
+          }
+        },
+        error: function () {
+          // Handle errors here, such as by showing an error message
+          console.error("Error while checking for access token readiness.");
+          setTimeout(checkAccessToken, 2000); // Retry after some delay
+        },
+      });
+    }
+
+    // Start polling
+    checkAccessToken();
+  });
+</script>
+<!-- Background image placeholder -->
+<div class="container">
+  <div class="left-content">
+    <h1>Login From A Device</h1>
+    <h2>URL: {{ verification_url }}</h2>
+    <h2>User Code: {{ user_code }}</h2>
+  </div>
+  <div class="separator"></div>
+  <div class="right-content">
+    <img src="./static/qr_code.png" alt="QR Code" class="right-image" />
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- <div class='button' style='width:512px;'>GRANT</div> -->
