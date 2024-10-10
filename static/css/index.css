@@ -1,85 +1,13 @@
-body,
-html {
-  height: 100%;
+body {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
-
-.background-image-container {
-  position: relative; /* Changed from absolute to relative */
-  /* Other styles like width, height, etc. */
-  background-size: 100% 100%; /* Cover the container */
-  background-position: center; /* Center the background image within the container */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-}
-
-.background-image {
-  width: 90%;
-  height: 90%;
-  object-fit: cover; /* This will cover the entire area without stretching the image */
-}
-
-.container {
-  position: relative; /* Required for z-index to work */
-  z-index: 2; /* This will place the container above the background image */
-  width: 1130px; /* Example width, adjust as needed */
-  height: 612px;
-  /* max-width: 960px; /* Maximum width of the container, adjust as needed */
-  padding: 20px;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.7
-  ); /* Example background with opacity */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example shadow */
-  border-radius: 10px; /* Example border radius */
-  text-align: center; /* Center text if desired */
-  display: flex; /* Enable Flexbox */
-  align-items: center; /* Center items vertically */
-  justify-content: space-around; /* Space out the children */
-  margin-top: 150px; /* Move down */
-  margin-left: 37px; /* Move right */
-  margin-bottom: 250px; /* Move up */
-  margin-right: 50px; /* Move left */
-}
-
-.left-content,
-.right-content {
-  flex: 1; /* Both take up equal space */
-  padding: 20px; /* Add padding for spacing */
-}
-
-.separator {
-  width: 2px; /* Thickness of the separator line */
-  background-color: #333; /* Color of the separator line */
-  height: 100%; /* Full height of the container */
-  margin: 0 20px; /* Margin on the sides of the separator for spacing */
-}
-
-.right-image {
-  max-width: 100%;
-  height: auto;
-  display: block; /* Removes bottom space under image */
-}
-
-/* Add this in a <style> tag within the head or an external CSS file */
-.student-profile-button {
-  display: inline-block; /* Allows width and height to be set */
-  padding: 10px 20px; /* Adjust padding to your preference for button size */
-  text-decoration: none; /* Removes underline from link */
-  color: white; /* Text color */
-  background-color: #007bff; /* Button color, using Bootstrap primary color as example */
-  border: none; /* No border by default, but you can add one if you like */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 16px; /* Text size */
-  font-weight: bold; /* Make the text bold */
-  cursor: pointer; /* Changes cursor to indicate it's clickable */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.student-profile-button:hover {
-  background-color: #0056b3; /* Slightly darker shade on hover */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

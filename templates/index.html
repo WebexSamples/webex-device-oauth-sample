@@ -1,5 +1,9 @@
 {% extends "temp.html" %} {% block content %}
-<h1>Welcome to Team Ashton's Dojo Tech School</h1>
-<br />
-<a href="{{ url_for('sign_in') }}" class="student-profile-button">Sign-In</a>
+<div class="center-content">
+    <h1>Device Authentication Grant Workflow Sample</h1>
+    <br />
+    <p
+>Select <strong>Sign-In</strong> to start the demo.</p>    
+<button type="button" class="student-profile-button" onclick="location.href='{{ url_for('sign_in') }}'">Sign-In</button>
+</div>
 {% endblock %}

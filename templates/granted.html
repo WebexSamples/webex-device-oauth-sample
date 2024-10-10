@@ -1,9 +1,6 @@
 {% extends "temp.html" %} {% block content %}
-<h1>Welcome to Team Ashton's Dojo Tech School</h1>
+<h1>Device Authentication Grant Workflow Sample</h1>
 <br />
-<a
-  href="{{ url_for('whoami', secure_prefix=secure_prefix) }}"
-  class="student-profile-button"
-  >Student Profile</a
->
+<p>Select <strong>Profile</strong> to see your Webex profile information.</p>
+<button type="button" class="student-profile-button" onclick="location.href='{{ url_for('whoami', secure_prefix=secure_prefix) }}'">Profile</button>
 {% endblock %}

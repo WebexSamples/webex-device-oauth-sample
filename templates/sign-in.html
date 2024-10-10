@@ -1,7 +1,6 @@
 {% extends "temp.html" %} {% block content %}
 <!-- Include jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script>
   $(document).ready(function () {
     function checkAccessToken() {
@@ -29,19 +28,14 @@
     checkAccessToken();
   });
 </script>
-<!-- Background image placeholder -->
-<div class="container">
-  <div class="left-content">
-    <h1>Login From A Device</h1>
-    <h2>URL: {{ verification_url }}</h2>
-    <h2>User Code: {{ user_code }}</h2>
-  </div>
-  <div class="separator"></div>
-  <div class="right-content">
-    <img src="./static/qr_code.png" alt="QR Code" class="right-image" />
-  </div>
-</div>
-
+<h1>Device Authentication Grant Workflow Sample</h1>
+<h2>Token Detection Logic</h2>
+<p><strong>NOTE</strong>: Check the <a href="{{ url_for('source_sign_in') }}" target="_blank">source</a> for this page to see the jQuery script that polls for an access token and loads the profile display page when the token is detected after authentication is successful.</p>
+<h2>URL and User Code</h2>
+<ul>
+  <li><strong>URL: {{ verification_url }}</strong></li>
+  <li><strong>User Code: {{ user_code }}</strong></li>
+</ul>
+<h2>QR Code</h2>
+<p><img src="./static/qr_code.png" alt="QR Code" class="right-image" /></p>
 {% endblock %}
-
-<!-- <div class='button' style='width:512px;'>GRANT</div> -->

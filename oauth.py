@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request, send_file
 from threading import Thread
 import requests
 import time
@@ -15,7 +15,7 @@ app.secret_key = os.urandom(16)
 # Global storage for the access token
 session = {}
 
-# Define your clientID and client secret
+# Replace with your Client ID and Client Secret from your integration
 clientID = ''
 clientSecret = ''
 
@@ -124,6 +124,9 @@ def sign_in():
     # Render the template and pass verification url, and user code for manual user authorization
     return render_template("sign-in.html", verification_url=verification_uri, user_code=user_code, secure_prefix=secure_prefix)
 
+@app.route('/source/sign-in')
+def source_sign_in():
+    return send_file('templates/sign-in.html', mimetype='text/plain')
 
 @app.route("/granted/<secure_prefix>")
 def granted(secure_prefix):
