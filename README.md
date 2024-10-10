@@ -1,6 +1,6 @@
 # Device Authentication Grant Workflow Sample
 
-This Python script is a Flask app using OAuth with Webex APIs via the device authorization grant flow, covering key web development and OAuth concepts, including:
+This Python script, authored by Ashton Jordan, is a Flask app using OAuth with Webex APIs via the device authorization grant flow, covering key web development and OAuth concepts, including:
 
 - Secure credentials
 - Token polling
