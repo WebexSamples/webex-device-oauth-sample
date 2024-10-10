@@ -5,6 +5,7 @@ import time
 import os
 import qrcode
 import secrets
+import base64
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -17,8 +18,10 @@ session = {}
 # Define your clientID and client secret
 clientID = ''
 clientSecret = ''
-credentials = ''  #base64 ecnode the clientid and client secret with a colon in the middle
 
+# Base64 encode the clientID and clientSecret
+credentials = f"{clientID}:{clientSecret}"
+credentials = base64.b64encode(credentials.encode()).decode()
 
 def qr_cde_generation(url):
     img = qrcode.make(url)
@@ -26,7 +29,6 @@ def qr_cde_generation(url):
 
 
 def poll_for_access_token(device_code, poll_interval, secure_prefix):
-    """Poll the token endpoint for an access token."""
     token_url = "https://webexapis.com/v1/device/token"
     headers = {'Authorization': f'Basic {credentials}'}
     body = {
@@ -63,9 +65,9 @@ def device_refresh_token():
         'refresh_token': f'{session["refresh_token"]}',
     }
 
-    token_refresh_reqeust = requests.post(url=refresh_token_url, data=refresh_body, headers=refresh_headers)
-    session['access_token'] = token_refresh_reqeust.json()['access_token']
-    session['refresh_token'] = token_refresh_reqeust.json()['refresh_token']
+    token_refresh_request = requests.post(url=refresh_token_url, data=refresh_body, headers=refresh_headers)
+    session['access_token'] = token_refresh_request.json()['access_token']
+    session['refresh_token'] = token_refresh_request.json()['refresh_token']
 
 
 def whoami_lookup(secure_prefix):
@@ -82,7 +84,6 @@ def main_page():
 
 @app.route("/sign-in")
 def sign_in():
-    """Main Grant page"""
     scopes = "meeting:recordings_read spark:all spark:kms"
     params = {'client_id': clientID, 'scope': scopes}
     device_auth_url = "https://webexapis.com/v1/device/authorize"
