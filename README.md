@@ -8,6 +8,8 @@ This Python script, authored by Ashton Jordan, is a Flask app using OAuth with W
 
 The app uses libraries such as `Flask`, `requests`, and `qrcode`, starts with a secret key and base64 encoded credentials, and includes functions for generating QR codes, polling and refreshing tokens, and fetching user info from Webex. Flask routes manage the authorization flow, token readiness, and user data display.
 
+In addition, in the <code>templates/sign-in.html</code> file, a JQuery-enabled script polls for an access token and loads the profile display page when the token is detected after authentication is successful.
+
 ## Prerequisites for Running the Sample Application
 
 Before continuing, make sure you meet the following prerequisites:
