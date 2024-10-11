@@ -2,5 +2,11 @@
 <h1>Device Authentication Grant Workflow Sample</h1>
 <br />
 <p>Select <strong>Profile</strong> to see your Webex profile information.</p>
-<button type="button" class="student-profile-button" onclick="location.href='{{ url_for('whoami', secure_prefix=secure_prefix) }}'">Profile</button>
+<button
+  type="button"
+  class="student-profile-button"
+  onclick="location.href='{{ url_for('whoami', secure_prefix=secure_prefix) }}'"
+>
+  Profile
+</button>
 {% endblock %}

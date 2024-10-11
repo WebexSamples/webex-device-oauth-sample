@@ -1,9 +1,14 @@
 {% extends "temp.html" %} {% block content %}
 <div class="center-content">
-    <h1>Device Authentication Grant Workflow Sample</h1>
-    <br />
-    <p
->Select <strong>Sign-In</strong> to start the demo.</p>    
-<button type="button" class="student-profile-button" onclick="location.href='{{ url_for('sign_in') }}'">Sign-In</button>
+  <h1>Device Authentication Grant Workflow Sample</h1>
+  <br />
+  <p>Select <strong>Sign-In</strong> to start the demo.</p>
+  <button
+    type="button"
+    class="student-profile-button"
+    onclick="location.href='{{ url_for('sign_in') }}'"
+  >
+    Sign-In
+  </button>
 </div>
 {% endblock %}
