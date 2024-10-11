@@ -19,7 +19,7 @@
         error: function () {
           // Handle errors here, such as by showing an error message
           console.error('Error while checking for access token readiness.');
-          setTimeout(checkAccessToken, 2000); // Retry after some delay
+          setTimeout(checkAccessToken, 2000); // Retry a 2 second delay
         },
       });
     }
@@ -33,8 +33,8 @@
 <p>
   <strong>NOTE</strong>: Check the
   <a href="{{ url_for('source_sign_in') }}" target="_blank">source</a> for this
-  page to see the jQuery script that polls for an access token and loads the
-  profile display page when the token is detected after authentication is
+  page to see the jQuery-enabled script that polls for an access token and loads
+  the profile display page when the token is detected after authentication is
   successful.
 </p>
 <h2>URL and User Code</h2>
@@ -43,5 +43,13 @@
   <li><strong>User Code: {{ user_code }}</strong></li>
 </ul>
 <h2>QR Code</h2>
-<p><img src="./static/qr_code.png" alt="QR Code" class="right-image" /></p>
+<p>
+  <img
+    src="./static/qr_code.png"
+    alt="QR Code"
+    class="right-image"
+    width="200"
+    height="200"
+  />
+</p>
 {% endblock %}

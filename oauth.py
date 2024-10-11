@@ -6,6 +6,7 @@ import os
 import qrcode
 import secrets
 import base64
+import json
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -15,7 +16,7 @@ app.secret_key = os.urandom(16)
 # Global storage for the access token
 session = {}
 
-# Replace with your Client ID and Client Secret from your integration
+# Define your clientID and client secret
 clientID = ''
 clientSecret = ''
 
@@ -46,7 +47,7 @@ def poll_for_access_token(device_code, poll_interval, secure_prefix):
             session[secure_prefix]['access_token'] = token_request.json()['access_token']
             session[secure_prefix]['refresh_token'] = token_request.json()['refresh_token']
             session[secure_prefix]['token_ready'] = True
-            print(token_request.json())
+            print("token_request.json()", token_request.json())
             break
         else:
             # Handle other errors (e.g., 'slow_down', 'expired_token')
@@ -89,7 +90,7 @@ def sign_in():
     device_auth_url = "https://webexapis.com/v1/device/authorize"
     device_auth_request = requests.post(url=device_auth_url, data=params)
     device_auth_response = device_auth_request.json()
-    print(device_auth_response)
+    print("device_auth_response: ", device_auth_response)
 
     # Generate a secure random alphanumeric string to be used as part of the session key
     secure_prefix = secrets.token_hex(8)  # Generates a secure random string
@@ -137,7 +138,6 @@ def granted(secure_prefix):
         # If the token isn't ready, you might want to inform the user or redirect
         return "Access token not ready yet. Please try again later."
 
-
 @app.route("/whoami/<secure_prefix>")
 def whoami(secure_prefix):
     # Using the device access token, use /people API to display user information.
@@ -147,15 +147,15 @@ def whoami(secure_prefix):
         device_refresh_token()
         user_info = whoami_lookup(secure_prefix)
     else:
-        user_info = user_info.json()
-
-    return render_template("whoami.html", me=user_info)
-
+        user_info = user_info.json() 
+        user_info_json = json.dumps(user_info, indent=4)
+        print(f"User Info: {user_info_json}")
+    
+    return render_template("whoami.html", user_info=user_info_json)
 
 @app.route("/access_token_ready/<secure_prefix>")
 def access_token_ready(secure_prefix):
     return jsonify({'token_ready': session[secure_prefix]['token_ready']})
-
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=10060)
