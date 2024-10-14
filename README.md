@@ -8,7 +8,20 @@ This Python script, authored by Ashton Jordan, is a Flask app using OAuth with W
 
 The app uses libraries such as `Flask`, `requests`, and `qrcode`, starts with a secret key and base64 encoded credentials, and includes functions for generating QR codes, polling and refreshing tokens, and fetching user info from Webex. Flask routes manage the authorization flow, token readiness, and user data display.
 
-In addition, in the <code>templates/sign-in.html</code> file, a JQuery-enabled script polls for an access token and loads the profile display page when the token is detected after authentication is successful.
+In addition, in the `templates/sign-in.html` file, a JQuery-enabled script polls for an access token and loads the profile display page when the token is detected after authentication is successful.
+
+This Flask application includes several additional files and directories to support its functionality:
+
+- **static/**: Contains static files.
+  - **css/**: Contains CSS files.
+    - [`index.css`](static/css/index.css): Main CSS file.
+- [`template-readme.md`](template-readme.md): Template README file with maintenance information.
+- **templates/**: Contains HTML templates for the Flask application.
+  - [`granted.html`](templates/granted.html): Template for the granted page.
+  - [`index.html`](templates/index.html): Template for the main page.
+  - [`sign-in.html`](templates/sign-in.html): Template for the sign-in page.
+  - [`temp.html`](templates/temp.html): Base template for other HTML templates.
+  - [`whoami.html`](templates/whoami.html): Template for the whoami page.
 
 ## Prerequisites for Running the Sample Application
 
