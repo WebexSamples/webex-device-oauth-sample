@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, send_file
+from dotenv import load_dotenv
 from threading import Thread
 import requests
 import time
@@ -13,12 +14,15 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
 
+# Load environment variables from .env file
+load_dotenv()
+
 # Global storage for the access token
 session = {}
 
 # Define your clientID and client secret
-clientID = ''
-clientSecret = ''
+clientID = os.getenv('CLIENT_ID')
+clientSecret = os.getenv('CLIENT_SECRET')
 
 # Base64 encode the clientID and clientSecret
 credentials = f"{clientID}:{clientSecret}"
