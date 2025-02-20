@@ -89,7 +89,7 @@ def main_page():
 
 @app.route("/sign-in")
 def sign_in():
-    scopes = "meeting:recordings_read spark:all spark:kms"
+    scopes = "spark:all spark:kms"
     params = {'client_id': clientID, 'scope': scopes}
     device_auth_url = "https://webexapis.com/v1/device/authorize"
     device_auth_request = requests.post(url=device_auth_url, data=params)
