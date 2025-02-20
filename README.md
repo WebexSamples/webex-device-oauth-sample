@@ -61,7 +61,6 @@ To create a new Webex integration:
      - <https://oauth-helper-k.wbx2.com/helperservice/v1/actions/device/callback>
      - <https://oauth-helper-r.wbx2.com/helperservice/v1/actions/device/callback>
    - **Scopes**: Select the following scopes for your integration:
-     - `meeting:recordings_read`
      - `spark:all`
 1. Select **Add Integration** at the bottom of the page to save your integration.
 1. After saving, you will be provided with a **Client ID** and **Client Secret**. Store these securely. You’ll use them in the sample code.
