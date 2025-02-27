@@ -60,8 +60,7 @@ To create a new Webex integration:
      - <https://oauth-helper-a.wbx2.com/helperservice/v1/actions/device/callback>
      - <https://oauth-helper-k.wbx2.com/helperservice/v1/actions/device/callback>
      - <https://oauth-helper-r.wbx2.com/helperservice/v1/actions/device/callback>
-   - **Scopes**: Select the following scopes for your integration:
-     - `meeting:recordings_read`
+   - **Scopes**: Select the following scope for your integration:
      - `spark:all`
 1. Select **Add Integration** at the bottom of the page to save your integration.
 1. After saving, you will be provided with a **Client ID** and **Client Secret**. Store these securely. You’ll use them in the sample code.
@@ -70,9 +69,9 @@ To create a new Webex integration:
 
 To run the sample app:
 
-1. Update the following variables in oauth.py:
-   - `clientID`: <**Client ID** from the integration you created above>
-   - `clientSecret`: <**Client Secret** from the integration you created above>
+1. Update the following variables in the .env file:
+   - CLIENT_ID=<**Client ID** from the integration you created above>
+   - CLIENT_SECRET=<**Client Secret** from the integration you created above>
 1. Open a terminal or command prompt.
 1. Navigate to the directory where `oauth.py` is located.
 1. Run the Python script using the following command:
@@ -88,7 +87,7 @@ To run the sample app:
    ```
 
 1. You can scan the QR with your device or enter the URL and authentication code.
-1. Once you've authenticated sucessfully, you can select **Student Profile** to see your profile information returned by the integration, for example:
+1. Once you've authenticated sucessfully, you can select the **Profile** button to see your profile information returned by the integration, for example:
 
    ```json
    {
